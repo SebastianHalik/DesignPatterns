@@ -1,5 +1,6 @@
 package design;
 
+import design.adapter.*;
 import design.builder.classic.BigHouseBuilder;
 import design.builder.classic.House;
 import design.builder.classic.HouseDirector;
@@ -37,7 +38,9 @@ public class Main {
     showFactory(isMethod);
      */
 
-    showFlyweight();
+    //showFlyweight();
+    
+    showAdapter();
   }
 
   private static void showObserver() {
@@ -124,7 +127,28 @@ public class Main {
       activeUnits.add(new TeslaTank(0, 0));
     }
     long elapsedTime = System.currentTimeMillis() - start;
-    System.out.println("Time measure in seconds: " + elapsedTime/1000F);
-    System.out.println("Time measure in minutes: " + elapsedTime/(60 *1000F));
+    System.out.println("Time measure in seconds: " + elapsedTime / 1000F);
+    System.out.println("Time measure in minutes: " + elapsedTime / (60 * 1000F));
+  }
+
+  private static void showAdapter() {
+    ContinentalSocket continentalSocket = new ContinentalSocket();
+    UKSocket ukSocket = new UKSocket();
+    UKDevice ukRadio = new UKDevice() {
+      @Override
+      public void powerOn() {
+        System.out.println("English music plays in background");
+      }
+    };
+
+    ContinentalDevice continentalRadio = new ContinentalDevice() {
+      @Override
+      public void on() {
+        System.out.println("European music plays in background");
+      }
+    };
+    TwoWayAdapter adapter = new TwoWayAdapter(ukRadio, continentalRadio);
+    continentalSocket.plugIn(adapter);
+    ukSocket.plugIn(adapter);
   }
 }
