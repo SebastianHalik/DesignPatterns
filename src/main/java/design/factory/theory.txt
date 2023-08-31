@@ -1,0 +1,2 @@
+Enkapsuluje on tworzenie nowych obiektów, user nie wie jakie dane mają obiekty i nie może się pomylić je tworząc
+Dodatkowo używamy abstrakcji -> Zwracam Factory (a nie BlueFactory/RedFactory) jak zwracam jednostki (np AirUnit) to bez koloru

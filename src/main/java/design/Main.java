@@ -5,6 +5,11 @@ import design.builder.classic.House;
 import design.builder.classic.HouseDirector;
 import design.builder.classic.SmallHouseBuilder;
 import design.builder.inside.HouseInside;
+import design.factory.UnitType;
+import design.factory.abstraction.*;
+import design.factory.method.Factory;
+import design.factory.method.Unit;
+import design.factory.method.UnitFactory;
 import design.observer.notification.Email;
 import design.observer.notification.MobileApp;
 import design.observer.notification.TextMessage;
@@ -17,8 +22,12 @@ public class Main {
     //showObserver();
 
     //showSingleton();
+    /*
     boolean isClass = false;
     showBuilder(isClass);
+     */
+    boolean isMethod = false;
+    showFactory(isMethod);
   }
 
   private static void showObserver() {
@@ -48,32 +57,52 @@ public class Main {
     //Przy porównaniu to jest 2x ten sam obiekt
     System.out.println("Czy to ten sam obiekt:  " + gameEngine.equals(gameEngine2));
   }
-  
+
   private static void showBuilder(boolean isClass) {
-    if(isClass) {
+    if (isClass) {
       HouseInside houseInside = new HouseInside.HouseBuilder()
           .buildFloors("floors")
           .buildRoof("roof")
           .buildWalls("walls")
           .build();
       System.out.println(houseInside.toString());
-    }
-    else {
+    } else {
       SmallHouseBuilder smallHouseBuilder = new SmallHouseBuilder();
       BigHouseBuilder bigHouseBuilder = new BigHouseBuilder();
-      
+
       //Lombok ma w sobie @Builder, warto uzyc
       HouseDirector smallHouseDirector = new HouseDirector(smallHouseBuilder);
       HouseDirector bigHouseDirector = new HouseDirector(bigHouseBuilder);
-      
+
       smallHouseDirector.buildHouse();
       bigHouseDirector.buildHouse();
-      
+
       House smallHouseInside = smallHouseDirector.getHouse();
       House bigHouseInside = bigHouseDirector.getHouse();
 
       System.out.println(smallHouseInside);
       System.out.println(bigHouseInside);
+    }
+  }
+
+  private static void showFactory(boolean isMethod) {
+    if (isMethod) {
+      Factory factory = new UnitFactory();
+      Unit tank = factory.createUnit(UnitType.TANK);
+      Unit rifleman = factory.createUnit(UnitType.RIFLEMAN);
+      System.out.println("Tank:  " + tank);
+      System.out.println("Rifleman:  " + rifleman);
+    } else {
+      AbstractFactory blueFactory = new BlueFactory();
+      AbstractFactory redFactory = new RedFactory();
+
+      MechanizedUnit blueTank = blueFactory.createMechanizedUnit(UnitType.TANK);
+      InfantryUnit redRifleman = redFactory.createInfantryUnit(UnitType.RIFLEMAN);
+      AirUnit blueHelicopter = blueFactory.createAirUnit(UnitType.HELICOPTER);
+
+      System.out.println("blueTank:  " + blueTank);
+      System.out.println("redRifleman:  " + redRifleman);
+      System.out.println("blueHelicopter:  " + blueHelicopter);
     }
   }
 }
