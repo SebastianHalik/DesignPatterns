@@ -10,6 +10,7 @@ import design.factory.abstraction.*;
 import design.factory.method.Factory;
 import design.factory.method.Unit;
 import design.factory.method.UnitFactory;
+import design.flyweight.TeslaTank;
 import design.observer.notification.Email;
 import design.observer.notification.MobileApp;
 import design.observer.notification.TextMessage;
@@ -17,17 +18,26 @@ import design.observer.order.Order;
 import design.observer.order.OrderStatus;
 import design.singleton.GameEngine;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
   public static void main(String[] args) {
     //showObserver();
 
     //showSingleton();
+    
     /*
     boolean isClass = false;
     showBuilder(isClass);
      */
+    
+    /*
     boolean isMethod = false;
     showFactory(isMethod);
+     */
+
+    showFlyweight();
   }
 
   private static void showObserver() {
@@ -104,5 +114,17 @@ public class Main {
       System.out.println("redRifleman:  " + redRifleman);
       System.out.println("blueHelicopter:  " + blueHelicopter);
     }
+  }
+
+  private static void showFlyweight() {
+    long start = System.currentTimeMillis();
+    List<Object> activeUnits = new ArrayList<>();
+    for (int i = 0; i < 10000000; i++) {
+      activeUnits.add(new TeslaTank(0, 0));
+      activeUnits.add(new TeslaTank(0, 0));
+    }
+    long elapsedTime = System.currentTimeMillis() - start;
+    System.out.println("Time measure in seconds: " + elapsedTime/1000F);
+    System.out.println("Time measure in minutes: " + elapsedTime/(60 *1000F));
   }
 }

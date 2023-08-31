@@ -1,0 +1,11 @@
+Pyłek Teoria:
+
+Z filmu devfoundry:
+
+Polega na wydzieleniu wspólnych części obiektów (na przykładzie gry strategicznej np stałe wartości jednostek jak koszt, nazwa etc
+Części różne (typu ile życia zostało, położenie X i Y) zostają w obiektach jako zmienne
+Pozwala to zaoszczędzić pamięć przy tworzeniu dużej liczby obiektów (bo nie tworzymy 20 pól klasy, tylko np 3 (x, y, hpleft) + 1 (UnitStats)
+
+Obiekt ten wspólny ze statystykami tworzymy tylko raz przy uruchomieniu programu, tak więc każda klasa dostanie ten sam obiekt.
+Czyli to samo miejsce w pamięci
+
