@@ -6,6 +6,7 @@ import design.builder.classic.House;
 import design.builder.classic.HouseDirector;
 import design.builder.classic.SmallHouseBuilder;
 import design.builder.inside.HouseInside;
+import design.decorator.*;
 import design.factory.UnitType;
 import design.factory.abstraction.*;
 import design.factory.method.Factory;
@@ -39,8 +40,10 @@ public class Main {
      */
 
     //showFlyweight();
-    
-    showAdapter();
+
+    //showAdapter();
+
+    showDecorator();
   }
 
   private static void showObserver() {
@@ -150,5 +153,12 @@ public class Main {
     TwoWayAdapter adapter = new TwoWayAdapter(ukRadio, continentalRadio);
     continentalSocket.plugIn(adapter);
     ukSocket.plugIn(adapter);
+  }
+
+  private static void showDecorator() {
+    Terrain terrain = new SwampDecorator(new Hill());
+    Terrain terrain1 = new SwampDecorator(new ForestDecorator(new Plain()));
+    System.out.println("Swamp hill cost " + terrain.fuelCost() + " and should be: 50"); //45
+    System.out.println("Swamp forest plain cost " + terrain1.fuelCost() + " and should be: 33"); //33
   }
 }

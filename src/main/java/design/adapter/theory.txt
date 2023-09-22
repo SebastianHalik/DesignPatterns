@@ -4,6 +4,6 @@ Z filmu devfoundry:
 
 Służy on do komunikacji/możliwości użycia dwóch niezwiązanych ze sobą klas/interfejsów. Przykład z gniazdkami albo np.
 Klasa wymaga dokumentu w XML, a my wysyłamy w JSON -> Adapter idealnie to ogarnie
-Największa wada adaptera to dodawanie kolejnego poziomu abstrakcji miedzy naszymi komponentami.
+Największa wada adaptera to dodawanie kolejnego poziomu abstrakcji między naszymi komponentami.
 Mój przykład był prosty, ale w pracy jest to o wiele trudniejsze.
 Mogą dojść w pracy np róże wersje adapterów zależnie od różnych wersji aplikacji

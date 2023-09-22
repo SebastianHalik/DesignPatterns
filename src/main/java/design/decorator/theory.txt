@@ -1,0 +1,7 @@
+Mamy abstrakcyjny komponent, który chcemy rozszerzać (Terrain). Mamy dziedziczące po nim konkretne klasy (Hill i Plain),
+
+Minusy:
+Wymaga dziedziczenia, wiec ogranicza nas
+Ogranicza liczbę klas, ale wciąż może ich być dużo
+
+Jest wbudowany domyslnie w Jave (FileInputStream np)
