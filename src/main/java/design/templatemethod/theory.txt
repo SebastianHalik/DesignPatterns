@@ -1,0 +1,8 @@
+Modyfikuje jakis algorytm. Mamy konkretne kroki, ktora chcemy miec w danej kolejnosc i/lub danym sposob,
+a abstrakcyjne te ktore mozna zmieniac. Algorytm oznaczamy jako final, by nie mozna go bylo nadpisac i public by wywolac.
+Tam deklarujemy kolejnosc, a kroki ktore mozna zmieniac do metody abstrakcyjne, te ktore nie to prywatne.
+
+Jest to popularny wzorzec w Springu, gdzie istnieje JDBC - funkcja sluzaca do nawiazywania polaczenia z baza danych.
+
+Minus tego wzorca to to, ze uzywa dziedziczenia, czyli nas ogranicza. Nie uzywa się interfejsów, bo wtedy moznaby nadpisac
+metode algorytmu i zmienic np jego kroki, a tego chemy uniknac. Dlatego klasa abstrakcyjna jest bezpieczniejsza.

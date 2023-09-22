@@ -21,6 +21,7 @@ import design.observer.notification.TextMessage;
 import design.observer.order.Order;
 import design.observer.order.OrderStatus;
 import design.singleton.GameEngine;
+import design.templatemethod.AutomaticCarStartingSequence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +48,9 @@ public class Main {
 
     //showDecorator();
 
-    showChainOfResponsibility();
+    //showChainOfResponsibility();
+    
+    showTemplateMethod();
   }
 
   private static void showObserver() {
@@ -176,5 +179,9 @@ public class Main {
     captain.setSuperiorOfficer(general);
     
     sergeant.processMessage(message);
+  }
+  private static void showTemplateMethod() {
+    AutomaticCarStartingSequence automaticCarStartingSequence = new AutomaticCarStartingSequence();
+    automaticCarStartingSequence.startCar();
   }
 }
