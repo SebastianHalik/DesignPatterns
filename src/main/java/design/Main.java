@@ -6,6 +6,8 @@ import design.builder.classic.House;
 import design.builder.classic.HouseDirector;
 import design.builder.classic.SmallHouseBuilder;
 import design.builder.inside.HouseInside;
+import design.chainofresponsibility.message.Message;
+import design.chainofresponsibility.officer.*;
 import design.decorator.*;
 import design.factory.UnitType;
 import design.factory.abstraction.*;
@@ -43,7 +45,9 @@ public class Main {
 
     //showAdapter();
 
-    showDecorator();
+    //showDecorator();
+
+    showChainOfResponsibility();
   }
 
   private static void showObserver() {
@@ -160,5 +164,17 @@ public class Main {
     Terrain terrain1 = new SwampDecorator(new ForestDecorator(new Plain()));
     System.out.println("Swamp hill cost " + terrain.fuelCost() + " and should be: 50"); //45
     System.out.println("Swamp forest plain cost " + terrain1.fuelCost() + " and should be: 33"); //33
+  }
+
+  private static void showChainOfResponsibility() {
+    Message message = new Message("ATTACK!", 20, OfficerRank.CAPTAIN);
+    Officer sergeant = new Sergeant();
+    Officer captain = new Captain();
+    Officer general = new General();
+    
+    sergeant.setSuperiorOfficer(captain);
+    captain.setSuperiorOfficer(general);
+    
+    sergeant.processMessage(message);
   }
 }

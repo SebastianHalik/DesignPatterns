@@ -1,0 +1,2 @@
+Pozwala ustrzec się przed dużą liczba ifów, czyści kod, przekazuje request od handlera do handlera, az znajdzie kogos
+kto odbierze wiadomosc
