@@ -1,0 +1,8 @@
+Command Patterns = Wzorzec Polecenie
+
+Służy do enkapsulacji obiektów, które są przesyłane (np właśnie polecenia/komendy). Może być używany do tworzenia kolejek
+poleceń, logowania poleceń lub też do tworzenia operacji cofnięcia ostatniej akcji.
+
+Jest głównie używany do enskapsulacji poleceń, do odizolowania strefy klienta, który będzie taką komende wywoływał.
+
+W javie jego implementacja to Runnable. Minus to każda komenda to osobny plik, więc projekt może mieć dużo plików.

@@ -8,6 +8,15 @@ import design.builder.classic.SmallHouseBuilder;
 import design.builder.inside.HouseInside;
 import design.chainofresponsibility.message.Message;
 import design.chainofresponsibility.officer.*;
+import design.command.Robot;
+import design.command.WorkShopApp;
+import design.command.command.robot.RobotCutCommand;
+import design.command.command.robot.RobotDrillCommand;
+import design.command.command.robot.RobotTurnOffCommand;
+import design.command.command.robot.RobotTurnOnCommand;
+import design.command.command.coffeemaker.CoffeeMaker;
+import design.command.command.coffeemaker.CoffeeMakerTurnOffCommand;
+import design.command.command.coffeemaker.CoffeeMakerTurnOnCommand;
 import design.decorator.*;
 import design.factory.UnitType;
 import design.factory.abstraction.*;
@@ -49,8 +58,10 @@ public class Main {
     //showDecorator();
 
     //showChainOfResponsibility();
-    
-    showTemplateMethod();
+
+    //showTemplateMethod();
+
+    showCommand();
   }
 
   private static void showObserver() {
@@ -174,14 +185,32 @@ public class Main {
     Officer sergeant = new Sergeant();
     Officer captain = new Captain();
     Officer general = new General();
-    
+
     sergeant.setSuperiorOfficer(captain);
     captain.setSuperiorOfficer(general);
-    
+
     sergeant.processMessage(message);
   }
+
   private static void showTemplateMethod() {
     AutomaticCarStartingSequence automaticCarStartingSequence = new AutomaticCarStartingSequence();
     automaticCarStartingSequence.startCar();
+  }
+
+  private static void showCommand() {
+    Robot robot = new Robot();
+    WorkShopApp workShopApp = new WorkShopApp();
+    workShopApp.addToQueue(new RobotTurnOnCommand(robot));
+    workShopApp.addToQueue(new RobotCutCommand(robot));
+    workShopApp.addToQueue(new RobotDrillCommand(robot));
+    workShopApp.addToQueue(new RobotTurnOffCommand(robot));
+
+    CoffeeMaker coffeeMaker = new CoffeeMaker();
+    workShopApp.addToQueue(new CoffeeMakerTurnOnCommand(coffeeMaker));
+    workShopApp.addToQueue(new CoffeeMakerTurnOffCommand(coffeeMaker));
+    
+    workShopApp.undoLastCommand();
+    
+    workShopApp.run();
   }
 }
