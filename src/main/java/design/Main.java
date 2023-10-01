@@ -36,6 +36,10 @@ import design.strategy.Chef;
 import design.strategy.egg_cooker.HardBoiledEggCooker;
 import design.strategy.egg_cooker.SoftBoiledEggCooker;
 import design.templatemethod.AutomaticCarStartingSequence;
+import design.visitor.activity.Squash;
+import design.visitor.activity.Treadmill;
+import design.visitor.activity.Weights;
+import design.visitor.visitors.VisitorImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +74,9 @@ public class Main {
     
     //showMemento();
 
-    showStrategy();
+    //showStrategy();
+    
+    showVisitor();
   }
 
   private static void showObserver() {
@@ -248,5 +254,17 @@ public class Main {
 
     chef.setEggCooker(new SoftBoiledEggCooker());
     chef.cook();
+  }
+
+  private static void showVisitor() {
+    Treadmill treadmill = new Treadmill(200);
+    Squash squash = new Squash(90);
+    Weights weights = new Weights(70,15);
+
+    VisitorImpl visitor = new VisitorImpl();
+    
+    treadmill.accept(visitor);
+    squash.accept(visitor);
+    weights.accept(visitor);
   }
 }

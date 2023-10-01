@@ -1,0 +1,3 @@
+Wzorzec behawioralny, w tak zwanym Bang of Four
+Wykorzystujemy, gdy musimy wykonac akcje na klasach, ktore nie maja za wiele ze soba wspolnego
+Uzyteczny tez, gdy mamy znana strukture obiektow, na ktorych bedziemy chcieli robic coraz to nowe operacje
