@@ -1,0 +1,4 @@
+Główny cel: odczytywanie i zapisywanie stanu obiektu
+Przykład użycia: przechowywanie wersji aplikacji, przechowywanie informacji o formularzu (user moze wracac do starych krokow)
+Memento jest wykorzystywane w Spring Web Flow (StateManagmentMessageContext).
+ 

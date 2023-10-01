@@ -24,6 +24,8 @@ import design.factory.method.Factory;
 import design.factory.method.Unit;
 import design.factory.method.UnitFactory;
 import design.flyweight.TeslaTank;
+import design.memento.smart_app.SmartApp;
+import design.memento.smart_app.SmartAppCaretaker;
 import design.observer.notification.Email;
 import design.observer.notification.MobileApp;
 import design.observer.notification.TextMessage;
@@ -61,7 +63,9 @@ public class Main {
 
     //showTemplateMethod();
 
-    showCommand();
+    //showCommand();
+    
+    showMemento();
   }
 
   private static void showObserver() {
@@ -212,5 +216,22 @@ public class Main {
     workShopApp.undoLastCommand();
     
     workShopApp.run();
+  }
+  
+  private static void showMemento() {
+    SmartAppCaretaker smartAppCaretaker = new SmartAppCaretaker();
+    SmartApp smartApp = new SmartApp();
+    
+    smartApp.changeVersion(1.0);
+    smartApp.changeVersion(1.1);
+    smartApp.changeVersion(1.2);
+    
+    smartAppCaretaker.addMemento(smartApp.save());
+    
+    smartApp.changeVersion(1.3);
+    smartApp.changeVersion(2.0);
+    smartApp.changeVersion(2.1);
+    
+    smartApp.load(smartAppCaretaker.getMemento(0));
   }
 }
