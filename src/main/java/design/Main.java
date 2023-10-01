@@ -32,6 +32,9 @@ import design.observer.notification.TextMessage;
 import design.observer.order.Order;
 import design.observer.order.OrderStatus;
 import design.singleton.GameEngine;
+import design.strategy.Chef;
+import design.strategy.egg_cooker.HardBoiledEggCooker;
+import design.strategy.egg_cooker.SoftBoiledEggCooker;
 import design.templatemethod.AutomaticCarStartingSequence;
 
 import java.util.ArrayList;
@@ -65,7 +68,9 @@ public class Main {
 
     //showCommand();
     
-    showMemento();
+    //showMemento();
+
+    showStrategy();
   }
 
   private static void showObserver() {
@@ -233,5 +238,15 @@ public class Main {
     smartApp.changeVersion(2.1);
     
     smartApp.load(smartAppCaretaker.getMemento(0));
+  }
+  
+  private static void showStrategy() {
+    Chef chef = new Chef("Robert Makłowicz");
+    
+    chef.setEggCooker(new HardBoiledEggCooker());
+    chef.cook();
+
+    chef.setEggCooker(new SoftBoiledEggCooker());
+    chef.cook();
   }
 }
