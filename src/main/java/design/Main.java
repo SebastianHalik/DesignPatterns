@@ -18,6 +18,7 @@ import design.command.command.coffeemaker.CoffeeMaker;
 import design.command.command.coffeemaker.CoffeeMakerTurnOffCommand;
 import design.command.command.coffeemaker.CoffeeMakerTurnOnCommand;
 import design.decorator.*;
+import design.facade.deliverybox.DeliveryBoxFacade;
 import design.factory.UnitType;
 import design.factory.abstraction.*;
 import design.factory.method.Factory;
@@ -79,7 +80,9 @@ public class Main {
     
     //showVisitor();
     
-    showState();
+    //showState();
+    
+    showFacade();
   }
 
   private static void showObserver() {
@@ -278,5 +281,10 @@ public class Main {
     coffeeMachine.pushTheButton();
     coffeeMachine.takeTheCup();
     coffeeMachine.returnTheCoin();
+  }
+  
+  private static void showFacade() {
+    DeliveryBoxFacade facade = new DeliveryBoxFacade();
+    facade.pickUpPackage();
   }
 }

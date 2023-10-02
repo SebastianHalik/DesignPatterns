@@ -1,0 +1,8 @@
+Jest to wzorzec strukturalny, podobny do wzorca Adapter.
+Celem adaptera jest modyfikacja interfejsu, tak by dostosować go do potrzeb klienta.
+Celem fasady jest zapewnienie klientowi uproszczonego interfejsu dla danego systemu lub podsystemu.
+Najczęstszym zadaniem fasady jest izolacja klienta od podsystemu, czyli wewnętrznych metod oraz logiki biznesowej.
+Sztuczka polega na tym, że tworzymy dodatkową klasę, do której delegujemy funkcje, które może używać user, a pozostałe sa w innych klasach.
+
+Zalety fasady: oddziela klienta od kodu
+Wady: jest zależna od podsystemu (aktualizacja systemu = aktualizacja fasady)
