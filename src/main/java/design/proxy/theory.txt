@@ -1,0 +1,3 @@
+JPA-flagowe wykorzystanie proxy
+Rzadko się go używa
+Wady: dodanie kolejnej warstwy, która komplikuje kod

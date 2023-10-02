@@ -32,6 +32,7 @@ import design.observer.notification.MobileApp;
 import design.observer.notification.TextMessage;
 import design.observer.order.Order;
 import design.observer.order.OrderStatus;
+import design.proxy.SavedGame;
 import design.singleton.GameEngine;
 import design.state.CoffeeMachine;
 import design.strategy.Chef;
@@ -45,6 +46,9 @@ import design.visitor.visitors.VisitorImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static design.proxy.Utils.listSavedGames;
+import static design.proxy.Utils.loadSavedGames;
 
 public class Main {
   public static void main(String[] args) {
@@ -73,16 +77,18 @@ public class Main {
     //showTemplateMethod();
 
     //showCommand();
-    
+
     //showMemento();
 
     //showStrategy();
-    
+
     //showVisitor();
-    
+
     //showState();
-    
-    showFacade();
+
+    //showFacade();
+
+    showProxy();
   }
 
   private static void showObserver() {
@@ -229,32 +235,32 @@ public class Main {
     CoffeeMaker coffeeMaker = new CoffeeMaker();
     workShopApp.addToQueue(new CoffeeMakerTurnOnCommand(coffeeMaker));
     workShopApp.addToQueue(new CoffeeMakerTurnOffCommand(coffeeMaker));
-    
+
     workShopApp.undoLastCommand();
-    
+
     workShopApp.run();
   }
-  
+
   private static void showMemento() {
     SmartAppCaretaker smartAppCaretaker = new SmartAppCaretaker();
     SmartApp smartApp = new SmartApp();
-    
+
     smartApp.changeVersion(1.0);
     smartApp.changeVersion(1.1);
     smartApp.changeVersion(1.2);
-    
+
     smartAppCaretaker.addMemento(smartApp.save());
-    
+
     smartApp.changeVersion(1.3);
     smartApp.changeVersion(2.0);
     smartApp.changeVersion(2.1);
-    
+
     smartApp.load(smartAppCaretaker.getMemento(0));
   }
-  
+
   private static void showStrategy() {
     Chef chef = new Chef("Robert Makłowicz");
-    
+
     chef.setEggCooker(new HardBoiledEggCooker());
     chef.cook();
 
@@ -265,26 +271,31 @@ public class Main {
   private static void showVisitor() {
     Treadmill treadmill = new Treadmill(200);
     Squash squash = new Squash(90);
-    Weights weights = new Weights(70,15);
+    Weights weights = new Weights(70, 15);
 
     VisitorImpl visitor = new VisitorImpl();
-    
+
     treadmill.accept(visitor);
     squash.accept(visitor);
     weights.accept(visitor);
   }
-  
+
   private static void showState() {
     CoffeeMachine coffeeMachine = new CoffeeMachine();
-    
+
     coffeeMachine.insertCoin();
     coffeeMachine.pushTheButton();
     coffeeMachine.takeTheCup();
     coffeeMachine.returnTheCoin();
   }
-  
+
   private static void showFacade() {
     DeliveryBoxFacade facade = new DeliveryBoxFacade();
     facade.pickUpPackage();
+  }
+
+  private static void showProxy() {
+    List<SavedGame> savedGames = loadSavedGames();
+    listSavedGames(savedGames);
   }
 }
