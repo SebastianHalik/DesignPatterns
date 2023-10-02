@@ -32,6 +32,7 @@ import design.observer.notification.TextMessage;
 import design.observer.order.Order;
 import design.observer.order.OrderStatus;
 import design.singleton.GameEngine;
+import design.state.CoffeeMachine;
 import design.strategy.Chef;
 import design.strategy.egg_cooker.HardBoiledEggCooker;
 import design.strategy.egg_cooker.SoftBoiledEggCooker;
@@ -76,7 +77,9 @@ public class Main {
 
     //showStrategy();
     
-    showVisitor();
+    //showVisitor();
+    
+    showState();
   }
 
   private static void showObserver() {
@@ -266,5 +269,14 @@ public class Main {
     treadmill.accept(visitor);
     squash.accept(visitor);
     weights.accept(visitor);
+  }
+  
+  private static void showState() {
+    CoffeeMachine coffeeMachine = new CoffeeMachine();
+    
+    coffeeMachine.insertCoin();
+    coffeeMachine.pushTheButton();
+    coffeeMachine.takeTheCup();
+    coffeeMachine.returnTheCoin();
   }
 }

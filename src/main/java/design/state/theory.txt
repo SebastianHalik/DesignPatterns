@@ -1,0 +1,8 @@
+Służy do tego, że program działa różnie zależnie od jego stanu (np. automat do kawy-jest moneta lub nie, kliknął
+przycisk user lub nie etc.). Tworzymy go poprzez interfejs State, który ma po prostu funkcje operate(),
+po której dziedziczą konkretne stany, a klasa Context trzyma KONKRETNY stan. Context = CoffeMaker
+Działanie na interfejsie sprawia, że będziemy pamiętać, by wszędzie dodać nowa akcje (akcja = funkcja)
+Umożliwia testowanie jednostkowe każdego ze stanów i poprawia czytelność kodu.
+Ułatwia to utrzymywanie projektu. Wszystko ze stanu powinno być w jednej paczce. Można zrobić singleton ze stanu, aby uniknąć
+tworzenia wielu obiektów.
+State jest podobny do strategii, ale tutaj wiemy z góry co się stanie, a w strategii implementacja jest wstrzykiwana z zewnątrz.
